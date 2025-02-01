@@ -1,5 +1,5 @@
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import React, { ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 
 interface FiledSelectProps {
     initialValue: string;

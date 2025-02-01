@@ -1,27 +1,23 @@
 "use client"
 
-import querystring from "querystring";
 import Filed from "@/app/components/filed";
 import { Textarea } from "@/components/ui/textarea";
-import { Fragment, useRef, useState } from "react";
-import { auth, db } from "@/lib/firebase/client";
+import { Fragment, useState } from "react";
+import { auth } from "@/lib/firebase/client";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { FaBox, FaChair, FaCoffee, FaDesktop, FaLaptop, FaUser } from "react-icons/fa";
+import { FaBox, FaChair, FaDesktop, FaLaptop } from "react-icons/fa";
 import { SiSensu } from "react-icons/si";
 import { RiSofaFill } from "react-icons/ri";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { BsThreeDots } from "react-icons/bs";
 import { Button } from "@/components/ui/button";
-import { IoArrowDownCircle } from "react-icons/io5";
 import Image from "next/image";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { FiLogOut } from "react-icons/fi";
 import { signOut } from "firebase/auth";
 import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
-import { doc, setDoc } from "firebase/firestore";
 import Link from "next/link";
-import { ModeToggle } from "@/components/ui/mode-toggle";
 import ModeSwitch from "@/components/ui/mode-switch";
 
 export default function Page() {
@@ -65,7 +61,6 @@ export default function Page() {
     };
 
     const router = useRouter()
-    const textAreaRef = useRef(null);
 
     const signOutWithGoogle = async () => {
         await signOut(auth)
@@ -105,7 +100,7 @@ export default function Page() {
             } else {
                 throw new Error("Googleフォームの送信に失敗しました");
             }
-        } catch (err) {
+        } catch {
             toast.dismiss();
             toast.error("送信に失敗しました😭");
         }

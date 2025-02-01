@@ -1,9 +1,8 @@
 import React, { useState, useEffect, ReactNode } from 'react';
 import FiledSelect from './filed-select';
-import { FaCoffee } from 'react-icons/fa';
 
 const Filed = ({ filedName, onValueChange, maxSeats, icon, className }:
-  { filedName: string, onValueChange: Function, maxSeats: number, icon?: ReactNode, className: string }) => {
+  { filedName: string, onValueChange: (filedName: string, selectedValue: string)=>void, maxSeats: number, icon?: ReactNode, className: string }) => {
   const [selectedValue, setSelectedValue] = useState('0');
 
   useEffect(() => {
