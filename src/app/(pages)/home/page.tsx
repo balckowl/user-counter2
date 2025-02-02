@@ -137,11 +137,11 @@ export default function Page() {
                             </Button>
                         </li>
 
-                        {/* <li>
+                        <li>
                             <Button asChild variant="ghost">
-                                <Link href="#use">サイトの使い方</Link>
+                                <Link href="/analytics" target="_blank">統計</Link>
                             </Button>
-                        </li> */}
+                        </li>
                     </ul>
                 </div>
                 <div>
