@@ -80,18 +80,18 @@ export default function Page() {
     const yobi = today.getDay();
 
     // 今日の日付
-    const todayISO = today.toISOString().split("T")[0];
+    const todayISO = format(today, "yyyy-MM-dd");
 
     // 先週の月曜
     const lastMonday = new Date(today)
     lastMonday.setDate(today.getDate() - yobi - 6);
-    const lastMondayISO = lastMonday.toISOString().split("T")[0];
+    const lastMondayISO = format(lastMonday, "yyyy-MM-dd");
 
 
     // 先週の金曜
     const lastFriday = new Date(lastMonday);
     lastFriday.setDate(lastMonday.getDate() + 4);
-    const lastFridayISO = lastFriday.toISOString().split("T")[0];
+    const lastFridayISO = format(lastFriday, "yyyy-MM-dd");
 
 
     let todayData = data.slice(0, 14)
