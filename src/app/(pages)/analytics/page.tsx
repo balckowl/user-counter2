@@ -161,7 +161,10 @@ export default function Page() {
 
     return (
         <div>
-            <div className="text-3xl font-bold mt-8 ml-4">人数カウント統計情報</div>
+            <div className="mt-8 ml-4">
+                <div className='text-3xl font-bold mb-4'>人数カウント統計情報</div>
+                <p>PCでの閲覧推奨です</p>
+            </div>
             <Card className="my-4 w-[80%] mx-auto">
                 <CardHeader>
                     <CardTitle>今日の利用者数</CardTitle>

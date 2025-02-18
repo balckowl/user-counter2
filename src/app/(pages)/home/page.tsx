@@ -19,6 +19,7 @@ import { useRouter } from "next/navigation";
 import toast, { Toaster } from "react-hot-toast";
 import Link from "next/link";
 import ModeSwitch from "@/components/ui/mode-switch";
+import { GoGraph } from "react-icons/go";
 
 export default function Page() {
 
@@ -204,6 +205,13 @@ export default function Page() {
                                     <Filed className="col-span-2 col-start-9 row-start-4" filedName="編集（mac）" onValueChange={handleFieldValueChange} maxSeats={2} />
                                     <Filed className="col-span-2 col-start-11 row-start-4" filedName="静音" onValueChange={handleFieldValueChange} maxSeats={1} />
                                 </div>
+
+                                <Button>
+                                    <Link target="_blank" href="/analytics" className="flex items-center gap-1">
+                                        <div>統計情報</div>
+                                        <GoGraph />
+                                    </Link>
+                                </Button>
 
 
                                 {/* <div className="flex items-center gap-3">
