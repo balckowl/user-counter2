@@ -106,57 +106,58 @@ export default function Page() {
     const chartConfig = {
         sofaA: {
             label: "ソファー（左上）",
-            color: "rgb(255, 99, 132)",
+            color: "rgb(121, 134, 203)", // Indigo Lighten-1
         },
         sofaB: {
             label: "ソファー（左下）",
-            color: "rgb(54, 162, 235)",
+            color: "rgb(79, 195, 247)", // Light Blue Lighten-1
         },
         sofaC: {
             label: "ソファー（左上）",
-            color: "rgb(255, 206, 86)",
+            color: "rgb(255, 204, 128)", // Amber Lighten-2
         },
         sofaD: {
             label: "ソファー（右下）",
-            color: "rgb(75, 192, 192)",
+            color: "rgb(165, 214, 167)", // Green Lighten-3
         },
         box: {
             label: "ボックス席",
-            color: "rgb(153, 102, 255)",
+            color: "rgb(255, 171, 145)", // Deep Orange Lighten-3
         },
         pc: {
             label: "PC席",
-            color: "rgb(255, 159, 64)",
+            color: "rgb(178, 223, 219)", // Teal Lighten-4
         },
         monitor: {
             label: "モニター席",
-            color: "rgb(233, 30, 99)",
+            color: "rgb(255, 138, 101)", // Deep Orange Lighten-2
         },
         highchair: {
             label: "ハイチェア席",
-            color: "rgb(0, 200, 83)",
+            color: "rgb(197, 225, 165)", // Light Green Lighten-3
         },
         movable: {
             label: "可動席",
-            color: "rgb(255, 87, 34)",
+            color: "rgb(144, 202, 249)", // Blue Lighten-3
         },
         tatami: {
             label: "畳",
-            color: "rgb(63, 81, 181)",
+            color: "rgb(255, 238, 88)", // Yellow Accent-2
         },
         silent: {
             label: "静音",
-            color: "rgb(0, 188, 212)",
+            color: "rgb(129, 212, 250)", // Light Blue Lighten-3
         },
         editorA: {
             label: "編集MAC",
-            color: "rgb(121, 85, 72)",
+            color: "rgb(244, 143, 177)", // Pink Lighten-2
         },
         editorB: {
             label: "編集WIN",
-            color: "rgb(96, 125, 139)",
+            color: "rgb(179, 157, 219)", // Deep Purple Lighten-3
         },
-    } satisfies ChartConfig
+    } satisfies ChartConfig;
+
 
     return (
         <div>
