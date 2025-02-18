@@ -94,11 +94,11 @@ export default function Page() {
                 toast.success("送信しました😃");
 
                 // 3秒後にログアウト
-                setTimeout(() => {
-                    signOutWithGoogle();
-                }, 3000);
+                // setTimeout(() => {
+                //     signOutWithGoogle();
+                // }, 3000);
             } else {
-                throw new Error("Googleフォームの送信に失敗しました");
+                throw new Error("送信に失敗しました");
             }
         } catch {
             toast.dismiss();
