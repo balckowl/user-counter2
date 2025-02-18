@@ -20,6 +20,8 @@ import {
 } from "@/components/ui/chart"
 
 
+
+
 type DataType = {
     createdAt: string;
     contents: {
@@ -228,39 +230,6 @@ export default function Page() {
                 <CardContent>
                     <ChartContainer config={chartConfig}>
                         <BarChart accessibilityLayer data={chartTodayData}>
-                            <CartesianGrid vertical={false} />
-                            <XAxis
-                                dataKey="date"
-                                tickLine={false}
-                                tickMargin={10}
-                                axisLine={false}
-                                tickFormatter={(value) => value.slice(0, 5)}
-                            />
-                            <ChartTooltip content={<ChartTooltipContent hideLabel />} />
-                            <ChartLegend content={<ChartLegendContent />} />
-                            {Object.entries(chartConfig).map(([key, value]) => (
-                                <Bar
-                                    key={key}
-                                    dataKey={key}
-                                    stackId="a"
-                                    fill={value.color}
-                                    radius={[0, 0, 0, 0]}
-                                />
-                            ))}
-                        </BarChart>
-                    </ChartContainer>
-                </CardContent>
-            </Card>
-
-
-            <Card className="my-12 w-[80%] mx-auto">
-                <CardHeader>
-                    <CardTitle>先週の利用者数</CardTitle>
-                    <CardDescription>{lastMondayISO}〜{lastFridayISO}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                    <ChartContainer config={chartConfig}>
-                        <BarChart accessibilityLayer data={chartLastweekTotal}>
                             <CartesianGrid vertical={false} />
                             <XAxis
                                 dataKey="date"
