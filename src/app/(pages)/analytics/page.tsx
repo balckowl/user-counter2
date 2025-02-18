@@ -19,9 +19,6 @@ import {
     ChartTooltipContent,
 } from "@/components/ui/chart"
 
-
-
-
 type DataType = {
     createdAt: string;
     contents: {
@@ -45,9 +42,8 @@ type DataType = {
 };
 
 
-// 1週間分の260件を取得する
 async function fetchData(): Promise<DataType[]> {
-    const url = "https://script.google.com/macros/s/AKfycbypqaKM8QC98cu3a6Ntka8xclr-_6Xi71Y0Gb2OfOeMmgKKEQ2b1oqG3EcPI-tECF0D/exec?limit=140"
+    const url = "https://script.google.com/macros/s/AKfycbypqaKM8QC98cu3a6Ntka8xclr-_6Xi71Y0Gb2OfOeMmgKKEQ2b1oqG3EcPI-tECF0D/exec?limit=14"
     const res = await fetch(url, { cache: 'no-store' });
     return await res.json();
 }
@@ -64,7 +60,7 @@ export default function Page() {
         });
     }, []);
 
-    // データがまだ取得できていなければ Progress を表示する
+
     const [progress, setProgress] = useState(13)
     if (data.length === 0) {
         setTimeout(() => setProgress(66), 500)
@@ -75,39 +71,17 @@ export default function Page() {
             </div>
         );
     }
-    
+
 
 
     const today = new Date();
-    const yobi = today.getDay();
-
-    // 今日の日付
     const todayISO = format(today, "yyyy-MM-dd");
-
-    // 先週の月曜
-    const lastMonday = new Date(today)
-    lastMonday.setDate(today.getDate() - yobi - 6);
-    const lastMondayISO = format(lastMonday, "yyyy-MM-dd");
-
-
-    // 先週の金曜
-    const lastFriday = new Date(lastMonday);
-    lastFriday.setDate(lastMonday.getDate() + 4);
-    const lastFridayISO = format(lastFriday, "yyyy-MM-dd");
-
-
     let todayData = data.slice(0, 14)
-    let lastWeekData = data.slice(0, 66)
+
 
     todayData = todayData.filter(element => {
         return element.createdAt.startsWith(todayISO);
     });
-
-    lastWeekData = lastWeekData.filter(element => {
-        const elementDateISO = element.createdAt.split(" ")[0]; // YYYY-MM-DD 形式を取得
-        return elementDateISO >= lastMondayISO && elementDateISO <= lastFridayISO;
-    });
-
 
 
     const chartTodayData = todayData.reverse().map((element) => {
@@ -128,40 +102,6 @@ export default function Page() {
             editorB: element.contents.countList.editorB
         };
     });
-
-    const laskWeekTotal: Record<string, Record<string, number>> = {};
-    lastWeekData.reverse().forEach(element => {
-        const date = format(new Date(element.createdAt), "MM/dd"); 
-
-        if (!laskWeekTotal[date]) {
-            laskWeekTotal[date] = {
-                sofaA: 0,
-                sofaB: 0,
-                sofaC: 0,
-                sofaD: 0,
-                box: 0,
-                pc: 0,
-                monitor: 0,
-                highchair: 0,
-                movable: 0,
-                tatami: 0,
-                silent: 0,
-                editorA: 0,
-                editorB: 0,
-            };
-        }
-
-        Object.keys(element.contents.countList).forEach((key) => {
-            laskWeekTotal[date][key as keyof typeof element.contents.countList] += element.contents.countList[key as keyof typeof element.contents.countList];
-        });
-    });
-
-
-    const chartLastweekTotal = Object.entries(laskWeekTotal).map(([date, counts]) => ({
-        date,
-        ...counts
-    }));
-
 
     const chartConfig = {
         sofaA: {
@@ -217,7 +157,6 @@ export default function Page() {
             color: "rgb(96, 125, 139)",
         },
     } satisfies ChartConfig
-
 
     return (
         <div>
